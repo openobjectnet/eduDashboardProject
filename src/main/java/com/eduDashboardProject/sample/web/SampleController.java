@@ -24,7 +24,7 @@ public class SampleController {
 	public String testReqest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 	
 		String testStr = sampleService.getForDatabaseTest();
-		log.info("testReqest request start");
+		log.info("testReqest request start test");
 		
 		model.addAttribute("title", "sampleView");
 		model.addAttribute("name", "sehoon");
