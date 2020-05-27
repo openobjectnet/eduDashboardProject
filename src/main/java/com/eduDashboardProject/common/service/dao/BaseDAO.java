@@ -1,7 +1,7 @@
 package com.eduDashboardProject.common.service.dao;
 
 import java.util.List;
-
+	
 public interface BaseDAO {
 
 	public Object selectObject(String id, Object object);
