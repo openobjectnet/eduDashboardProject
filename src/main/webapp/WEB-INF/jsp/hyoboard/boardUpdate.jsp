@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>hyo_boardinsert</title>
+  <title>hyo_boardupdate</title>
 
   <!-- Custom fonts for this template-->
   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,15 +19,11 @@
 
   <!-- Custom styles for this template-->
   <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
-		<style>
-			input:focus {outline:none;}
-			textarea:focus {outline:none;}
-			#content:focus {outline:none;}
-		</style>
 
 </head>
 
 <body id="page-top">
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -60,53 +56,35 @@
             <div class="card-body">
               <div class="table-responsive">
                 
-                <form action="updateBoardView" method="post">
+                <form action="updateBoard" method="post">
                             <table class="detailArea" style="width: 100%;  border-collapse: separate; border-spacing: 10px 20px;">
                                 <tr class="TitleArea" >
-                                	<td style="display: none;" name="bno" readonly="readonly">${hb.bno }</td>
+                                		<input type="hidden" value="${ hb.bno }" name="bno">
                                     <td class="Title1" style="color: black; width: 100px;" >제목</td>
-                                    <td class="Title2" colspan="3" readonly="readonly" name="title">${ hb.title }</td>
-                                  	<input type="hidden" name="bno" value="${hb.bno}">
+                                    <td class="Title2" colspan="3" >
+                                        <input type="text" placeholder="제목을 입력해주세요" name="title" style="width: 100%;" value="${ hb.title }">
+                                    </td>
+                                    
                                 </tr>
                                 <tr class="UserNameArea">
                                     <td class="UserName1" style="color: black;">작성자</td>
                                     <td class="UserName2" >${ hb.id }</td>
-                                    <td style="color: black;">작성일</td>
-                                    <c:if test="${hb.reg_date eq hb.mod_date}">
-                                    <td>${ hb.reg_date }</td>
-                                    </c:if>
-                                    <c:if test="${hb.reg_date ne hb.mod_date}">
-                                    <td>${ hb.mod_date }</td>
-                                    </c:if>
                                 </tr>
                                 <tr class="noticeTextBox">
                                     <td class="TextArea"  colspan="4" style="height:500px; text-align:-webkit-auto;"> 
-                                        <textarea name="content" style="width:100%; height:100%; padding:1%; resize:none;" readonly="readonly">${ hb.content }</textarea>
+                                        <textarea name="content" style="width:100%; height:100%; padding:1%; resize:none">${ hb.content }</textarea>
                                     </td>
                                     
                                 </tr>
-                               <c:if test="${hb.id eq member.id }">
+                                
                                 <tr class="buttonArea" style="text-align: center;">
                                     <td class="buttonArea"  colspan="4">												
-                                        <input type="submit" class="site-btn" style="background-color: white; padding-left:15px; padding-right: 15px; min-width:120px; padding-top:10px; padding-bottom: 10px; width:120px; border: solid 1px rgb(161, 161, 161);" value="수정하기">	
-                                        <button class="site-btn" type="button" onclick="location.href='delete?bno=${hb.bno}'" style="background-color: white; padding-left:15px; padding-right: 15px; min-width:120px; padding-top:10px; padding-bottom: 10px; border: solid 1px rgb(161, 161, 161);">
-                                        	    삭제하기
+                                        <input type="submit" class="site-btn" style="background-color: white; padding-left:15px; padding-right: 15px; min-width:120px; padding-top:10px; padding-bottom: 10px; width:120px; border: solid 1px rgb(161, 161, 161);" value="등록하기">	
+                                        <button class="site-btn" type="button" onclick="location.href='/hyoboard/list'" style="background-color: white; padding-left:15px; padding-right: 15px; min-width:120px; padding-top:10px; padding-bottom: 10px; border: solid 1px rgb(161, 161, 161);">
+                                        	    목록가기
                                         </button>
                                     </td>
                                 </tr>
-                                </c:if>
-                                <c:if test="${hb.id ne member.id }">
-                                 <tr class="buttonArea" style="text-align: center;">
-                                    <td class="buttonArea"  colspan="4">												
-                                        <button class="site-btn" type="button" onclick="location.href='list'" style="background-color: white; padding-left:15px; padding-right: 15px; min-width:120px; padding-top:10px; padding-bottom: 10px; border: solid 1px rgb(161, 161, 161);">
-                                        	    목록으로
-                                        </button>
-                                    </td>
-                                </tr>
-                                
-                                </c:if>
-                                
-                                
                             </table>
                         </form>
                 

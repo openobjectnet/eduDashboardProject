@@ -36,6 +36,21 @@ public class HyoServiceImpl implements HyoService {
 		return hDAO.boardselect(bno);
 	}
 
+	@Override
+	public int updateBoard(HyoboardVO hb) {
+		return hDAO.updateBoard(hb);
+	}
+
+	@Override
+	public int deleteBoard(int bno) {
+		return hDAO.deleteBoard(bno);
+	}
+
+	@Override
+	public ArrayList<HyoboardVO> selectOne(String id) {
+		return hDAO.selectOne(id);
+	}
+
 
 	
 

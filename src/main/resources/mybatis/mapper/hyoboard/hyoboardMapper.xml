@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hyoMapper">
+	
+	<resultMap type="com.eduDashboardProject.hyo.vo.HyoboardVO" id="hyoboard">
+		<id column="bno" property="bno"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="reg_date" property="reg_date" javaType="java.sql.Date"/>
+		<result column="mod_date" property="mod_date" javaType="java.sql.Date"/>
+		<result column="id" property="id"/>
+	</resultMap>
+	
+	<insert id="insertBoard">
+		INSERT INTO hyo_board(title,content,reg_date,mod_date,id)VALUES(#{title},#{content},#{reg_date},#{mod_date},#{id})
+	</insert>
+	
+	<select id="selectList" resultMap="hyoboard">
+		SELECT * FROM hyo_board
+		ORDER BY BNO+1 DESC
+	</select>
+	
+	<select id="boardselect" resultMap="hyoboard">
+		SELECT * FROM hyo_board
+		WHERE BNO = #{bno}
+	</select>
+	
+	<update id="updateBoard">
+		UPDATE hyo_board
+		SET TITLE = #{title}, 
+		CONTENT = #{content},
+		MOD_DATE = NOW()
+		WHERE BNO = #{bno}
+	</update>
+	
+	<delete id="deleteBoard">
+		DELETE FROM hyo_board WHERE BNO = #{bno}
+	</delete>
+	
+	<select id="selectOne" resultMap="hyoboard">
+		SELECT * FROM hyo_board
+		WHERE ID = #{id}
+		ORDER BY BNO+1 DESC
+	</select>
+	
+</mapper>
