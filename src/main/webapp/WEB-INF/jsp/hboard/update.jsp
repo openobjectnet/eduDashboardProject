@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+<style type="text/css">
+input.form-control[readonly], textarea.form-control[readonly] { 
+  background-color: #fff;
+}
+</style>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,17 +17,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>EduDashboard :: H-Board List</title>
+  <title>EduDashboard :: H-Board Update</title>
 
-  <!-- Custom fonts for this template -->
+  <!-- Custom fonts for this template-->
   <link href="../../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- Custom styles for this template-->
   <link href="../../../resources/css/sb-admin-2.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
-  <link href="../../../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -32,7 +34,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <%@ include file="../common/sidebar.jsp" %>
+    <%@ include file="../common/sidebar.jsp"%>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -42,53 +44,41 @@
       <div id="content">
 
         <!-- Topbar -->
-        <%@ include file="../common/topbar.jsp" %>
+        <%@ include file="../common/topbar.jsp"%>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">H-Board Page</h1>
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <!-- <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">H-Board List</h6>
-            </div> -->
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead align="center">
-                    <tr>
-                      <th style="width: 5px">NO</th>
-                      <th>제목</th>
-                      <th>작성자</th>
-                    </tr>
-                  </thead>
-                  <tbody align="center">
-                    <c:forEach items="${list}" var="list">
-                  	<c:if test="${member.id eq list.id }">
-                    	<tr>
-                    		<td>${list.bno}</td>
-                    		<td><a href="read?bno=${list.bno}">${list.title}</a></td>
-                    		<td>${list.id}</td>
-                    	</tr>
-                    </c:if>
-                    </c:forEach>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card-footer">
-            	<div style="text-align: right;">
-            		<c:if test="${not empty member.id}">
-	            		<a href="insert" class="btn btn-primary">등록</a>
-            		</c:if>
-            	</div>
-            </div>
-          </div>
-
+          <h1 class="h3 mb-4 text-gray-800">H-Board Page</h1>
+			
+			<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body">
+			<div class="row">
+				<div class="col-lg-12">
+					<form method="post" onsubmit="return validate();">
+						<input type="hidden" id="bno" name="bno" value="${vo.bno}">
+						<div class="card shadow mb-4">
+			                <div class="card-header py-3">
+			                  	<input type="text" name="title" id="title" class="form-control" value="${vo.title}" placeholder="Enter title...">
+			                </div>
+			                <div class="card-body">
+			                  <textarea name="content" id="content" style="margin-top: 0px; margin-bottom: 0px; height: 321px;" class="form-control" placeholder="Enter content...">${vo.content }</textarea>
+			                </div>
+			                
+			                <div class="card-footer">
+			                	<div style="text-align: right;">
+			                		<input type="submit" class="btn btn-primary" value="수정">
+			                		<a href="list" class="btn btn-secondary">취소</a>
+			                	</div>
+			                </div>
+		              	</div>
+		              </form>
+				</div>
+			</div>
+			</div>
+			</div>
         </div>
         <!-- /.container-fluid -->
 
@@ -96,7 +86,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <%@ include file="../common/footer.jsp" %>
+      <%@ include file="../common/footer.jsp"%>
       <!-- End of Footer -->
 
     </div>
@@ -139,20 +129,34 @@
   <!-- Custom scripts for all pages-->
   <script src="../../../resources/js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="../../../resources/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="../../../resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="../../../resources/js/demo/datatables-demo.js"></script>
-
 </body>
 
 <script type="text/javascript">
-var msg = "${msg}";
+	function validate() {
+		var title = $("#title").val();
+		var content = $("textarea#content").val();
 
-if(msg != "") {
-   alert(msg);
-}
+		if(title == "") {
+			alert("제목을 입력해주세요.");
+			$("#title").focus();
+			return false;
+		}
+		if(content == ""){
+			alert("내용을 입력해주세요.");
+			$("textarea#content").focus();
+			return false;
+		}
+
+		var cf = confirm("수정하시겠습니까?");
+
+		if(cf == true){
+			return true;
+		} else {
+			return false;
+		}
+		
+
+	}
 </script>
+
 </html>
