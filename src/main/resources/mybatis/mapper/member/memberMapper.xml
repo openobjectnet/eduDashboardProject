@@ -17,5 +17,5 @@
 		 WHERE id = #{id}
 		   AND pwd = #{pwd}
 	</select>
-	
+
 </mapper>
