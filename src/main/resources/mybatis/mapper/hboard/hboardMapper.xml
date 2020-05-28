@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hboardMapper">
+	
+	<resultMap type="com.eduDashboardProject.hboard.vo.HboardVO" id="hboardVO">
+		<id column="bno" property="bno"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="reg_date" property="regdate" javaType="java.sql.Date"/>
+		<result column="mod_date" property="moddate" javaType="java.sql.Date"/>
+		<result column="id" property="id"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.eduDashboardProject.hboard.vo.HboardVO">
+		INSERT INTO h_board(title, content, id)
+		VALUES(#{title}, #{content}, #{id})
+	</insert>
+	
+	<select id="selectList" resultMap="hboardVO">
+		SELECT bno
+			 , title
+			 , content
+			 , reg_date
+			 , mod_date
+			 , id
+		  FROM h_board
+		ORDER BY bno DESC
+	</select>
+	
+	<select id="read" resultMap="hboardVO">
+		SELECT bno
+			 , title
+			 , content
+			 , reg_date
+			 , mod_date
+			 , id
+		  FROM h_board
+		 WHERE bno = #{bno}
+	</select>
+	
+	<update id="update" parameterType="com.eduDashboardProject.hboard.vo.HboardVO">
+		UPDATE h_board
+		<set>
+			<if test="title != null">title = #{title},</if>
+			<if test="content != null">content = #{content},</if>
+			mod_date = NOW()
+		</set>
+		 WHERE bno = #{bno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM h_board WHERE bno = #{bno}
+	</delete>
+	
+</mapper>
