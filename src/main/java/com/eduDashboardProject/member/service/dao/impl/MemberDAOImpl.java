@@ -34,6 +34,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("memberMapper.login", vo);
 	}
 
+
 	
 
 }

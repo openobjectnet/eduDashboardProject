@@ -9,4 +9,5 @@ public interface MemberService {
 	public int insert(MemberVO vo);
 	
 	public boolean login(MemberVO vo, HttpSession session);
+	
 }

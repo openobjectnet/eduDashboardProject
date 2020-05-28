@@ -41,12 +41,12 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user" action="/member/login" method="post">
+                  <form class="user" action="/member/login" method="post" onsubmit="return validate();">
                     <div class="form-group">
-                      <input type="text" name="id" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter ID">
+                      <input type="text" id="id" name="id" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter ID">
                     </div>
                     <div class="form-group">
-                      <input type="password" name="pwd" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" id="pwd" name="pwd" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -102,6 +102,23 @@ var msg = "${msg}";
 
 if(msg != "") {
 	alert(msg);
+}
+
+function validate() {
+	var id = $("#id").val();
+	var pwd = $("#pwd").val();
+
+	if(id == "") {
+		alert("아이디를 입력해주세요.");
+		$("#id").focus();
+		return false;
+	}
+	if(pwd == "") {
+		alert("비밀번호를 입력해주세요.");
+		$("#pwd").focus();
+		return false;
+	}
+	
 }
 
 </script>

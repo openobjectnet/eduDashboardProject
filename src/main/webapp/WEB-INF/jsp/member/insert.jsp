@@ -36,15 +36,15 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" method="post">
+              <form class="user" method="post" onsubmit="return validate();">
               	<div class="form-group">
-                  <input type="text" name="id" class="form-control form-control-user" id="exampleInputEmail" placeholder="ID">
+                  	<input type="text" id="id" name="id" class="form-control form-control-user" id="exampleInputEmail" placeholder="ID">
                 </div>
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control form-control-user" placeholder="Name">
+                  <input type="text" id="name" name="name" class="form-control form-control-user" placeholder="Name">
                 </div>
                 <div class="form-group">
-                  <input type="password" name="pwd" class="form-control form-control-user" id="exampleInputEmail" placeholder="Password">
+                  <input type="password" id="pwd" name="pwd" class="form-control form-control-user" id="exampleInputEmail" placeholder="Password">
                 </div>
                 <!-- <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -57,7 +57,7 @@
                 <!-- <a href="login.html" class="btn btn-primary btn-user btn-block">
                   Register Account
                 </a> -->
-                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
+                <input type="submit" class="btn btn-primary btn-user btn-block" id="registerBtn" value="Register Account">
                 <hr>
                 <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Register with Google
@@ -92,5 +92,28 @@
   <script src="../../../resources/js/sb-admin-2.min.js"></script>
 
 </body>
+<script type="text/javascript">
+function validate() {
+	var id = $("#id").val();
+	var name = $("#name").val();
+	var pwd = $("#pwd").val();
 
+	if(id == "") {
+		alert("아이디를 입력해주세요.");
+		$("#id").focus();
+		return false;
+	}
+	if(name == ""){
+		alert("이름을 입력해주세요.");
+		$("#name").focus();
+		return false;
+	}
+	if(pwd == "") {
+		alert("비밀번호를 입력해주세요.");
+		$("#pwd").focus();
+		return false;
+	}
+	
+}
+</script>
 </html>
