@@ -34,6 +34,30 @@ public interface HyoService {
 	 * @return
 	 */
 	HyoboardVO boardselect(int bno);
+
+
+	/**
+	 * 게시글 업데이트
+	 * @param hb
+	 * @return
+	 */
+	int updateBoard(HyoboardVO hb);
+
+
+	/**
+	 * 게시글 삭제
+	 * @param bno
+	 * @return
+	 */
+	int deleteBoard(int bno);
+
+
+	/**
+	 * 내가 쓴 글
+	 * @param mid
+	 * @return
+	 */
+	ArrayList<HyoboardVO> selectOne(String id);
 	
 	
 	

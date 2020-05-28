@@ -21,7 +21,7 @@
 
   <!-- Custom styles for this page -->
   <link href="/../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -57,6 +57,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
+              <input id="mid" style="display: none;" value="${member.id}">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                   	<tr>
@@ -66,19 +67,30 @@
                   		<th>작성일자</th>
                   	</tr>
                   </thead>
-                  <tbody>
-                  		<c:forEach var="l" items="${ list }">
+                  <tbody id="tb">
+                  		
+                   <c:forEach var="l" items="${ list }">
+                 	
                  	 <tr onclick="location.href='detailBoard?bno='+${l.bno}" style="cursor:pointer;">
-                  			<td>${l.bno}</td>
+                  			<td class="dd">${l.bno}</td>
                   			<td>${l.title}</td>
                   			<td>${l.id }</td>
-                  			<td>${l.reg_date }</td>
+                  		 
+                  		 <c:if test="${l.reg_date eq l.mod_date}">
+                             <td>${ l.reg_date }</td>
+                         </c:if>
+                        
+						 <c:if test="${l.reg_date ne l.mod_date}">
+                             <td>${ l.mod_date }</td>
+                         </c:if>
+                  
                    	 </tr>
-                  		</c:forEach>
+                   </c:forEach>
                   </tbody>
                   
                 </table>
                <button onclick="location.href='resisterView'">글쓰기</button>
+               <button onclick="myBoardList();" id="mybtn">내가 쓴 글</button>
               </div>
             </div>
           </div>
@@ -119,6 +131,43 @@
       </div>
     </div>
   </div>
+
+  <script>
+  
+	function myBoardList(){
+		var id = $('#mid').val();
+
+		$.ajax({
+			url:"myBoardList",
+			type:"GET",
+			data:{"id":id},
+			success:function(data){
+				var obj = JSON.parse(data);
+				var lengthobj = obj.list.length;
+				var listText = "";
+				var list = obj.list;
+					
+					$('#mybtn').remove();
+					$('#tb').empty();
+					
+					/* listText += "<td><button onclick='location.href="+'"'+"paydetail.do?pId="+list[i].pId+'"'+"'>"+"정보"+"</button></td>"; */
+					 for(var i=0; i < lengthobj; i++){
+						listText += "<tr onclick='location.href="+'"'+"detailBoard?bno="+list[i].bno+'"'+"'" +" style=cursor:pointer;>";	  
+						listText += "<td>"+list[i].bno+"</td>";
+						listText += "<td>"+list[i].title+"</td>";
+						listText += "<td>"+list[i].id+"</td>";
+						listText += "<td>"+list[i].mod_date+"</td>";
+						listText += "</tr>" 
+						$("#tb").html(listText);
+					} 
+			},error:function(){
+				alert('조회실패');
+						}
+			});
+		
+		}
+
+  </script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="/../resources/vendor/jquery/jquery.min.js"></script>

@@ -32,4 +32,19 @@ public class HyoDAOImpl implements HyoDAO {
 		return sqlSession.selectOne(namespace+".boardselect",bno);
 	}
 
+	@Override
+	public int updateBoard(HyoboardVO hb) {
+		return sqlSession.update(namespace+".updateBoard",hb);
+	}
+
+	@Override
+	public int deleteBoard(int bno) {
+		return sqlSession.delete(namespace+".deleteBoard",bno);
+	}
+
+	@Override
+	public ArrayList<HyoboardVO> selectOne(String id) {
+		return (ArrayList)sqlSession.selectList(namespace+".selectOne",id);
+	}
+
 }

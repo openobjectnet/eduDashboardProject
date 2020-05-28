@@ -11,4 +11,10 @@ public interface HyoDAO {
 	public int insertBoard(HyoboardVO hb);
 
 	public HyoboardVO boardselect(int bno);
+
+	public int updateBoard(HyoboardVO hb);
+
+	public int deleteBoard(int bno);
+
+	public ArrayList<HyoboardVO> selectOne(String id);
 }
