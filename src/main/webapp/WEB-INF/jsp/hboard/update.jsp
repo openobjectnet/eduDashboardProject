@@ -70,7 +70,7 @@ input.form-control[readonly], textarea.form-control[readonly] {
 			                <div class="card-footer">
 			                	<div style="text-align: right;">
 			                		<input type="submit" class="btn btn-primary" value="수정">
-			                		<a href="list" class="btn btn-secondary">취소</a>
+			                		<a href="read?bno=${vo.bno}" class="btn btn-secondary">취소</a>
 			                	</div>
 			                </div>
 		              	</div>

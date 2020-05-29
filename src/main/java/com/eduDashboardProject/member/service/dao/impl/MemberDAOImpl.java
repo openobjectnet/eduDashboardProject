@@ -34,6 +34,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("memberMapper.login", vo);
 	}
 
+	@Override
+	public Long idCheck(String id) {
+		
+		return sqlSession.selectOne("memberMapper.idCheck", id);
+	}
+
+
 	
 
 }

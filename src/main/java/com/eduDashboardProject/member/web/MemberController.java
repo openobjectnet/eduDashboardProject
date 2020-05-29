@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,18 +32,21 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertPOST(MemberVO vo, RedirectAttributes rttr) {
+	public ModelAndView insertPOST(MemberVO vo) {
 		log.info("insert POST....");
+		ModelAndView mav = new ModelAndView();
 		
 		int result = memberService.insert(vo);
 		
 		if(result == 1) {
-			rttr.addFlashAttribute("msg", "회원등록::실패");
+			mav.addObject("msg", "회원등록::실패");
 		}
 		
-		rttr.addFlashAttribute("msg", "회원등록::성공");
-
-		return "redirect:/";
+		mav.addObject("msg", "회원등록::성공");
+		
+		mav.setViewName("../../index");
+		
+		return mav;
 	}
 	
 	
@@ -75,5 +80,15 @@ public class MemberController {
 		return "redirect:/";
 		
 	}
+	
+	@RequestMapping(value = "/idCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean idCheck(@RequestParam("id") String id) throws Exception {
+		log.info("Ajax idCheck");
+		boolean result = memberService.idCheck(id);
+		
+		return result;
+	}
+	
 	
 }

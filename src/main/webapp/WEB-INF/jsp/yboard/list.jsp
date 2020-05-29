@@ -1,11 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<%-- <%@include file="../includes/header.jsp"%> --%>
-<%@include file="../common/topbar.jsp"%>
-
 
 <head>
 
@@ -17,46 +12,83 @@
 
   <title>EduDashboard:: List</title>
 
-  <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template -->
   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- Custom styles for this template -->
   <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- Custom styles for this page -->
+  <link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
-<body>
-<div class="row">
-	<div class="col-lg-12">
-	
-		<h1 class="page-header">Tables</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
 
+<body id="page-top">
 
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				Board List Page
-				<button id='regBtn' type="button" class="btn btn-xs pull-right">Register
-					New Board</button>
-			</div>
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<table class="table table-stripped table-bordered table-hover">
-					<thead>
-						<tr>
-							<th>#번호</th>
-							<th>제목</th>							
-							<th>작성일</th>
-							<th>수정일</th>
-						</tr>
-					</thead>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-					<c:forEach items="${list}" var="board">
+    <!-- Sidebar -->
+      <%@include file="../common/sidebar.jsp"%>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <%@include file="../common/topbar.jsp"%>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Board List Page</h1>
+          <p class="mb-4">HELLO YOOJIN BOARD!</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+          
+            <!-- <div class="card-header py-3">               
+             	
+              <i class="fas fa-arrow-right"></i>
+               <button id='regBtn' type="button" class="btn btn-secondary btn-icon-split"> Register
+					New Board </button>
+            </div> -->
+            <div class="card-header py-3">
+           <a id="regBtn" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                    <span class="text">Split Button Info</span>
+                  </a>
+            </div>
+            
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                     	<th>#BoardNO</th>
+						<th>Title</th>							
+						<th>Registration Date</th>
+						<th>Updated Date</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                    	<th>#BoardNO</th>
+						<th>Title</th>							
+						<th>Registration Date</th>
+						<th>Updated Date</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+               		 <c:forEach items="${list}" var="board">
 						<tr>
 							<td><c:out value="${board.bno}" /></td>
 							<%-- <td><a class='move' href='<c:out value="${board.bno}"/>'>
@@ -69,24 +101,53 @@
 									value="${board.mod_date }" /></td>
 						</tr>
 					</c:forEach>
-				</table>
-				<!-- table 태그의 끝 -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
+        </div>
+        <!-- /.container-fluid -->
 
-				<form action="actionForm" action="/board/list" method='get'>
-					<input type="hidden" id='bno' name='bno' value='<c:out value="${board.bno }"/>'>
-				</form>
+      </div>
+      <!-- End of Main Content -->
 
+      <!-- Footer -->
+     <%@include file="../common/footer.jsp" %>
+      <!-- End of Footer -->
 
- 
-			</div>
-			<!-- end panel-body -->
-		</div>
-		<!-- end panel -->
-	</div>
-</div>
-<!-- /.row -->
- <!-- Bootstrap core JavaScript-->
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">�</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -95,9 +156,15 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/resources/js/sb-admin-2.min.js"></script>
-    
+
+  <!-- Page level plugins -->
+  <script src="/resources/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/resources/js/demo/datatables-demo.js"></script>
+
 </body>
-<%@include file="../common/footer.jsp" %>
 <script type="text/javascript">
 	$(document).ready(
 					function() {				
@@ -119,7 +186,4 @@
 					
 					});
 </script>
-
-
-
-
+</html>

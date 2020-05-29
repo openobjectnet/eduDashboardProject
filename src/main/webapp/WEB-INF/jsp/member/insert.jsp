@@ -36,15 +36,28 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" method="post">
-              	<div class="form-group">
-                  <input type="text" name="id" class="form-control form-control-user" id="exampleInputEmail" placeholder="ID">
+              <form class="user" method="post" onsubmit="return validate();">
+              	<div class="form-group row">
+              		<div class="col-sm-10">
+                  	<input type="text" id="id" name="id" class="form-control form-control-user" id="exampleInputEmail" placeholder="ID">
+                  	</div>
+                  	<div class="col-sm-2">
+                  	<input type="button" class="btn btn-success" onclick="idCheck()" value="중복확인">
+                  	</div>
+                </div>
+                
+                <div class="form-group">
+	                <div class="col-sm-10">
+		                <div class="invalid-feedback" id="invalid-feedback" style="display: none;">*이미 존재하는 아이디입니다.</div>
+		                <div class="valid-feedback" id="valid-feedback" style="display: none;">*사용 가능한 아이디입니다.</div>
+	                </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control form-control-user" placeholder="Name">
+                  <input type="password" id="pwd" name="pwd" class="form-control form-control-user" id="exampleInputEmail" placeholder="Password">
                 </div>
+                
                 <div class="form-group">
-                  <input type="password" name="pwd" class="form-control form-control-user" id="exampleInputEmail" placeholder="Password">
+                  <input type="text" id="name" name="name" class="form-control form-control-user" placeholder="Name">
                 </div>
                 <!-- <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -57,7 +70,7 @@
                 <!-- <a href="login.html" class="btn btn-primary btn-user btn-block">
                   Register Account
                 </a> -->
-                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
+                <input type="submit" class="btn btn-primary btn-user btn-block" id="registerBtn" value="Register Account">
                 <hr>
                 <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Register with Google
@@ -71,7 +84,7 @@
                 <a class="small" href="forgot-password.html">Forgot Password?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="login.html">Already have an account? Login!</a>
+                <a class="small" href="/">로그인 화면</a>
               </div>
             </div>
           </div>
@@ -92,5 +105,72 @@
   <script src="../../../resources/js/sb-admin-2.min.js"></script>
 
 </body>
+<script type="text/javascript">
+var checkIdResult = false;
 
+function validate() {
+	
+	var id = $("#id").val();
+	var name = $("#name").val();
+	var pwd = $("#pwd").val();
+
+	if(checkIdResult == false){
+		alert("아이디 중복확인을 해주세요.");
+		return false;
+	}
+	if(id == "") {
+		alert("아이디를 입력해주세요.");
+		$("#id").focus();
+		return false;
+	}
+	if(name == ""){
+		alert("이름을 입력해주세요.");
+		$("#name").focus();
+		return false;
+	}
+	if(pwd == "") {
+		alert("비밀번호를 입력해주세요.");
+		$("#pwd").focus();
+		return false;
+	}
+	
+	
+}
+
+function idCheck() {
+	var id = $("#id").val();
+
+	if(id == "") {
+		alert("아이디를 입력해주세요.");
+		$("#id").focus();
+		return false;
+	} else {
+		$.ajax({
+			url: "idCheck?id="+id,
+			type: "GET",
+
+			success: function(data){
+				console.log(data);
+				if(data == false){
+					checkIdResult = false;
+					$("#invalid-feedback").css("display","inline");
+					$("#valid-feedback").css("display", "none");
+					$("#registerBtn").prop("disabled", "disabled");
+				}
+				if(data == true){
+					checkIdResult = true;
+					$("#invalid-feedback").css("display","none");
+					$("#valid-feedback").css("display", "inline");
+					$("#registerBtn").prop("disabled", "");
+				}
+			},
+			error: function(){
+				console.log("error");
+			}
+		});
+	}
+	
+}
+
+</script>
 </html>
