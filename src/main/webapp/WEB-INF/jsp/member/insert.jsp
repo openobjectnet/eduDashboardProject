@@ -47,10 +47,10 @@
                 </div>
                 
                 <div class="form-group">
-                <div class="col-sm-10">
-                <div class="invalid-feedback" id="invalid-feedback" style="display: none;">*이미 존재하는 아이디입니다.</div>
-                <div class="valid-feedback" id="valid-feedback" style="display: none;">*사용 가능한 아이디입니다.</div>
-                </div>
+	                <div class="col-sm-10">
+		                <div class="invalid-feedback" id="invalid-feedback" style="display: none;">*이미 존재하는 아이디입니다.</div>
+		                <div class="valid-feedback" id="valid-feedback" style="display: none;">*사용 가능한 아이디입니다.</div>
+	                </div>
                 </div>
                 <div class="form-group">
                   <input type="password" id="pwd" name="pwd" class="form-control form-control-user" id="exampleInputEmail" placeholder="Password">
@@ -84,7 +84,7 @@
                 <a class="small" href="forgot-password.html">Forgot Password?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="login.html">Already have an account? Login!</a>
+                <a class="small" href="/">로그인 화면</a>
               </div>
             </div>
           </div>

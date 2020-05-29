@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +72,7 @@
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div> -->
                   <div class="text-center">
-                    <a class="small" href="member/insert">Create an Account!</a>
+                    <a class="small" href="/member/insert">Create an Account!</a>
                   </div>
                 </div>
               </div>
@@ -82,6 +83,7 @@
       </div>
 
     </div>
+
 
   </div>
 
