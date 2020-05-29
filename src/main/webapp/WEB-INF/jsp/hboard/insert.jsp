@@ -53,6 +53,7 @@
 				<div class="col-lg-12">
 					<form method="post" onsubmit="return validate();">
 						<input type="hidden" id="id" name="id" value="${member.id}">
+						<input type="hidden" id="mno" name="mno" value="${member.mno}">
 						<div class="card shadow mb-4">
 			                <div class="card-header py-3">
 			                  	<input type="text" id="title" name="title" class="form-control" placeholder="Enter title...">

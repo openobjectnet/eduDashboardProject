@@ -17,5 +17,6 @@ public class HboardVO {
 	private Date regdate;
 	private Date moddate;
 	private String id;
+	private int mno;
 
 }
