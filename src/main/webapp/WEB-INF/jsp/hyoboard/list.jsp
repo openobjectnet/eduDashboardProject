@@ -133,6 +133,11 @@
   </div>
 
   <script>
+
+	var msg = "${msg}";
+	if(msg != ""){
+		alert(msg);
+		}
   
 	function myBoardList(){
 		var id = $('#mid').val();

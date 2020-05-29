@@ -12,12 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduDashboardProject.hyo.service.HyoService;
 import com.eduDashboardProject.hyo.vo.HyoboardVO;
 import com.eduDashboardProject.member.vo.MemberVO;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +53,7 @@ public class HyoController {
 	}
 	
 	@RequestMapping(value="/insertBoard")
-	public String boardInsert(HyoboardVO hb,HttpSession session) throws Exception {
+	public String boardInsert(HyoboardVO hb,HttpSession session,RedirectAttributes rttr) throws Exception {
 		
 		MemberVO m = (MemberVO)session.getAttribute("member");
 		hb.setId(m.getId());
@@ -61,8 +61,10 @@ public class HyoController {
 		int result = hService.insertBoard(hb);
 		
 		if(result > 0) {
+			rttr.addFlashAttribute("msg", "처리 성공");
 			return "redirect:/hyoboard/list";
 		}else {
+			rttr.addFlashAttribute("msg", "처리 실패");
 			return "common/errorPage";
 		}
 		
@@ -92,26 +94,30 @@ public class HyoController {
 	}
 	
 	@RequestMapping(value="/updateBoard")
-	public String updateBoard(HyoboardVO hb) {
+	public String updateBoard(HyoboardVO hb,RedirectAttributes rttr) {
 		
 		int result = hService.updateBoard(hb);
 		
 		if(result > 0) {
+			rttr.addFlashAttribute("msg", "처리 성공");
 			return "redirect:list";
 		}else {
+			rttr.addFlashAttribute("msg", "처리 실패");
 			return "common/errorPage";
 		}
 		
 	}
 	
 	@RequestMapping(value="/delete")
-	public String delete(int bno) {
+	public String delete(int bno,RedirectAttributes rttr) {
 		
 		int result = hService.deleteBoard(bno);
 		
 		if(result > 0) {
+			rttr.addFlashAttribute("msg", "삭제 성공");
 			return "redirect:list";
 		}else {
+			rttr.addFlashAttribute("msg", "삭제 실패");
 			return "comon/errorPage";
 		}
 	}
