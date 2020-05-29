@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getList" resultType="com.eduDashboardProject.yboard.web.domain.YboardDto">
 		select * from y_board
 		
+		
 		<!-- where id=#{id} -->
 		<!--pk값 바뀌면 where mno=#{mno} 로 가자  -->
 	</select>
@@ -20,8 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{title},#{content},#{id})
 		
 	</insert>
-
-
 	
 	<!--게시물 상세보기  -->
 	<select id="read" resultType="com.eduDashboardProject.yboard.web.domain.YboardDto">
@@ -30,7 +29,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where bno =	#{bno}
 		
 	</select>
-
 	
 	<!--게시물 삭제  -->
 	<delete id="delete" parameterType="long">
@@ -53,26 +51,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where bno = #{bno}
 		
 	</update>
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </mapper>

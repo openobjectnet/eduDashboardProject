@@ -53,18 +53,13 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
           
-            <!-- <div class="card-header py-3">               
-             	
-              <i class="fas fa-arrow-right"></i>
-               <button id='regBtn' type="button" class="btn btn-secondary btn-icon-split"> Register
-					New Board </button>
-            </div> -->
+            
             <div class="card-header py-3">
            <a id="regBtn" class="btn btn-info btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-arrow-right"></i>
                     </span>
-                    <span class="text">Split Button Info</span>
+                    <span class="text">Register</span>
                   </a>
             </div>
             
@@ -89,17 +84,17 @@
                   </tfoot>
                   <tbody>
                		 <c:forEach items="${list}" var="board">
+               		 <c:if test="${member.id eq board.id }">
 						<tr>
 							<td><c:out value="${board.bno}" /></td>
-							<%-- <td><a class='move' href='<c:out value="${board.bno}"/>'>
-									<c:out value="${board.title}" />
-							</a></td> --%>
+							
 							<td><a href="get?bno=${board.bno}">${board.title}</a></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.reg_date }" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${board.mod_date }" /></td>
 						</tr>
+						</c:if>
 					</c:forEach>
                   </tbody>
                 </table>
