@@ -41,5 +41,14 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public boolean idCheck(String id) {
+		Long cnt = memberDAO.idCheck(id);
+		
+		boolean result = (cnt == 0) ? true : false;
+		
+		return result;
+	}
+
 
 }

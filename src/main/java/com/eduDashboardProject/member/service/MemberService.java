@@ -10,4 +10,6 @@ public interface MemberService {
 	
 	public boolean login(MemberVO vo, HttpSession session);
 	
+	public boolean idCheck(String id);
+	
 }

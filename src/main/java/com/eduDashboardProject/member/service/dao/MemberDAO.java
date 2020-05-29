@@ -8,4 +8,6 @@ public interface MemberDAO {
 	
 	public MemberVO login(MemberVO vo);
 	
+	public Long idCheck(String id);
+	
 }
