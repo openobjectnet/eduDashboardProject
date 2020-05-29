@@ -31,7 +31,7 @@ public class HyoController {
 	private HyoService hService;
 	
 	@RequestMapping(value = "/list")
-	public ModelAndView listGet(ModelAndView mv) throws Exception {
+	public ModelAndView listGet(ModelAndView mv)  {
 		log.info("hyo_list.....");
 		
 		ArrayList<HyoboardVO> list = hService.selectList();
@@ -42,7 +42,7 @@ public class HyoController {
 	}
 	
 	@RequestMapping(value="/resisterView")
-	public ModelAndView boardresister(ModelAndView mv,HttpSession session) throws Exception {
+	public ModelAndView boardresister(ModelAndView mv,HttpSession session) {
 		
 		MemberVO m = (MemberVO)session.getAttribute("member");
 		
@@ -53,7 +53,7 @@ public class HyoController {
 	}
 	
 	@RequestMapping(value="/insertBoard")
-	public String boardInsert(HyoboardVO hb,HttpSession session,RedirectAttributes rttr) throws Exception {
+	public String boardInsert(HyoboardVO hb,HttpSession session,RedirectAttributes rttr) {
 		
 		MemberVO m = (MemberVO)session.getAttribute("member");
 		hb.setId(m.getId());

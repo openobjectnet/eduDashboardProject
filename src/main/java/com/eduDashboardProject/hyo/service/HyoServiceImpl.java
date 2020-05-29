@@ -16,12 +16,12 @@ public class HyoServiceImpl implements HyoService {
 	private HyoDAO hDAO;
 	
 	@Override
-	public int getListCount() throws Exception {
+	public int getListCount() {
 		return 0;
 	}
 
 	@Override
-	public ArrayList<HyoboardVO> selectList() throws Exception {
+	public ArrayList<HyoboardVO> selectList() {
 		return hDAO.selectList();
 	}
 

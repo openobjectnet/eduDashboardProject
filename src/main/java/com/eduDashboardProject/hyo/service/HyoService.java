@@ -11,7 +11,7 @@ public interface HyoService {
 	 * @return
 	 * @throws Exception
 	 */
-	int getListCount()throws Exception;
+	int getListCount();
 	
 	
 	/**
@@ -19,7 +19,7 @@ public interface HyoService {
 	 * @return
 	 * @throws Exception
 	 */
-	ArrayList<HyoboardVO> selectList()throws Exception;
+	ArrayList<HyoboardVO> selectList();
 
 
 	/**
