@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.eduDashboardProject.hitstable.service.HistService;
+import com.eduDashboardProject.hitstable.vo.HistTable;
 import com.eduDashboardProject.hyo.service.HyoService;
 import com.eduDashboardProject.hyo.vo.HyoboardVO;
 import com.eduDashboardProject.member.vo.MemberVO;
@@ -29,6 +31,9 @@ public class HyoController {
 
 	@Resource(name="HyoService")
 	private HyoService hService;
+	
+	@Resource(name="HistService")
+	private HistService hiService;
 	
 	@RequestMapping(value = "/list")
 	public ModelAndView listGet(ModelAndView mv)  {
@@ -57,6 +62,20 @@ public class HyoController {
 		
 		MemberVO m = (MemberVO)session.getAttribute("member");
 		hb.setId(m.getId());
+		hb.setMno(m.getMno());
+		
+		// 히스트 테이블 테스트
+		
+		HistTable ht = new HistTable();
+		ht.setUser_name(m.getName());
+		ht.setUser_id(m.getId());
+		ht.setAction("Insert");
+		
+		int hisresult = hiService.insertHist(ht);
+		
+		//---------------------------------------
+		
+		if(hisresult >0) {
 		
 		int result = hService.insertBoard(hb);
 		
@@ -68,14 +87,17 @@ public class HyoController {
 			return "common/errorPage";
 		}
 		
-		
+		}else {
+			System.out.println("등록 중 오류발생!!");
+			return "common/errorPage";
+
+		}
 	}
 	
 	@RequestMapping(value="/detailBoard")
 	public ModelAndView boardDetail(ModelAndView mv,int bno,HttpSession session) {
 		
 		HyoboardVO hb = hService.boardselect(bno);
-		
 		mv.addObject("hb",hb);
 		mv.setViewName("hyoboard/boardDetail");
 		
@@ -94,7 +116,22 @@ public class HyoController {
 	}
 	
 	@RequestMapping(value="/updateBoard")
-	public String updateBoard(HyoboardVO hb,RedirectAttributes rttr) {
+	public String updateBoard(HyoboardVO hb,RedirectAttributes rttr,HttpSession session) {
+		
+		MemberVO m = (MemberVO)session.getAttribute("member");
+		
+		
+		
+		// 히스트 테이블 테스트
+		
+		HistTable ht = new HistTable();
+		ht.setUser_name(m.getName());
+		ht.setUser_id(m.getId());
+		ht.setAction("Update");
+		
+		int hisresult = hiService.insertHist(ht);
+		
+		//---------------------------------------
 		
 		int result = hService.updateBoard(hb);
 		
@@ -109,7 +146,21 @@ public class HyoController {
 	}
 	
 	@RequestMapping(value="/delete")
-	public String delete(int bno,RedirectAttributes rttr) {
+	public String delete(int bno,RedirectAttributes rttr,HttpSession session) {
+		
+		MemberVO m = (MemberVO)session.getAttribute("member");
+		
+		
+		// 히스트 테이블 테스트
+		
+		HistTable ht = new HistTable();
+		ht.setUser_name(m.getName());
+		ht.setUser_id(m.getId());
+		ht.setAction("Delete");
+		
+		int hisresult = hiService.insertHist(ht);
+		
+		//---------------------------------------
 		
 		int result = hService.deleteBoard(bno);
 		

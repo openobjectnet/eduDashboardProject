@@ -5,11 +5,13 @@
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<jee:jndi-lookup id="dataSource" jndi-name="jndi/eduDashboardProject" resource-ref="true" />
 
@@ -26,6 +28,28 @@
 	
 	<context:component-scan base-package="com.eduDashboardProject.yboard.web.service"></context:component-scan>
 	
+	<!-- transaction manager, use JtaTransactionManager for global tx -->
+		<bean id="transactionManager"
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	 <tx:attributes> 
+		<tx:method name="select*" rollback-for="Exception" read-only="true"/>
+	 	<tx:method name="update*" rollback-for="Exception"/> 
+	    <tx:method name="insert*" rollback-for="Exception"/> 
+	 	<tx:method name="delete*" rollback-for="Exception"/> 
+	 	<tx:method name="register*" rollback-for="Exception"/>
+	 	<tx:method name="modify*" rollback-for="Exception"/>
+	 	<tx:method name="remove" rollback-for="Exception"/>
+	 </tx:attributes>
+    </tx:advice>
+
+
+
+	
+
 
 <!--
 	<util:properties id="githubProperties" location="classpath*:properties/github.properties"/>-->
