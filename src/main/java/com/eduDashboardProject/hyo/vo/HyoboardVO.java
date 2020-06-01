@@ -19,6 +19,7 @@ public class HyoboardVO {
 	private Date reg_date;
 	private Date mod_date;
 	private String id;
+	private int mno;
 	
 	
 }

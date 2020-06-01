@@ -13,6 +13,7 @@
 		SELECT id
 			 , name
 			 , pwd
+			 , mno
 		  FROM member
 		 WHERE id = #{id}
 		   AND pwd = #{pwd}

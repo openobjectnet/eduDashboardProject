@@ -13,7 +13,8 @@
 	</resultMap>
 	
 	<insert id="insertBoard">
-		INSERT INTO hyo_board(title,content,reg_date,mod_date,id)VALUES(#{title},#{content},#{reg_date},#{mod_date},#{id})
+		INSERT INTO hyo_board(title,content,reg_date,mod_date,id,mno)
+		VALUES(#{title},#{content},#{reg_date},#{mod_date},#{id},#{mno})
 	</insert>
 	
 	<select id="selectList" resultMap="hyoboard">

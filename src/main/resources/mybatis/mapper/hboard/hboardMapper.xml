@@ -10,11 +10,12 @@
 		<result column="reg_date" property="regdate" javaType="java.sql.Date"/>
 		<result column="mod_date" property="moddate" javaType="java.sql.Date"/>
 		<result column="id" property="id"/>
+		<result column="mno" property="mno"/>
 	</resultMap>
 	
 	<insert id="insert" parameterType="com.eduDashboardProject.hboard.vo.HboardVO">
-		INSERT INTO h_board(title, content, id)
-		VALUES(#{title}, #{content}, #{id})
+		INSERT INTO h_board(title, content, id, mno)
+		VALUES(#{title}, #{content}, #{id}, #{mno})
 	</insert>
 	
 	<select id="selectList" resultMap="hboardVO">
