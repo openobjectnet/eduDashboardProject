@@ -26,4 +26,21 @@
 	
 	<mvc:annotation-driven />
 	
+	<bean id="loginInterceptor" class="com.eduDashboardProject.interceptor.LoginInterceptor" />
+	<bean id="authInterceptor" class="com.eduDashboardProject.interceptor.AuthInterceptor" />	
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/member/loginPost"/>
+			<ref bean="loginInterceptor"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/main"/>
+			<mvc:mapping path="/hboard/*"/>
+			<ref bean="authInterceptor"/>
+		</mvc:interceptor>
+		
+	</mvc:interceptors>
+	
 </beans>

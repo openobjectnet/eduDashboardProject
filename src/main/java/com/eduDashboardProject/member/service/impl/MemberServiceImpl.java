@@ -28,17 +28,17 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean login(MemberVO vo, HttpSession session) {
-		MemberVO check = memberDAO.login(vo);
+	public MemberVO login(MemberVO vo, HttpSession session) {
+		MemberVO member = memberDAO.login(vo);
 		
-		boolean result = (check == null) ? false : true;
+//		boolean result = (check == null) ? false : true;
 		
-		if(result) {
-			session.setAttribute("member", check);
-		}
+//		if(result) {
+//			session.setAttribute("member", check);
+//		}
 		
 		
-		return result;
+		return member;
 	}
 
 	@Override

@@ -42,7 +42,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user" action="/member/login" method="post" onsubmit="return validate();">
+                  <form class="user" action="/member/loginPost" method="post" onsubmit="return validate();">
                     <div class="form-group">
                       <input type="text" id="id" name="id" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter ID">
                     </div>
