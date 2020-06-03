@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,20 +51,34 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(MemberVO vo, HttpSession session) {
-		boolean result = memberService.login(vo, session);
-		ModelAndView mav = new ModelAndView();
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public ModelAndView login(MemberVO vo, HttpSession session) {
+//		boolean result = memberService.login(vo, session);
+//		ModelAndView mav = new ModelAndView();
+//		
+//		if(result == true) {
+//			log.info("login Success");
+//			mav.setViewName("/main");
+//		} else {
+//			mav.setViewName("../../index");
+//			mav.addObject("msg", "Fail Login");
+//		}
+//		
+//		return mav;
+//	}
+	
+	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
+	public void login(MemberVO vo, HttpSession session, Model model) {
+		log.info("loginPost");
 		
-		if(result == true) {
-			log.info("login Success");
-			mav.setViewName("/main");
-		} else {
-			mav.setViewName("../../index");
-			mav.addObject("msg", "Fail Login");
+		MemberVO member = memberService.login(vo, session);
+		
+		if(member == null) {
+			return;
 		}
 		
-		return mav;
+		model.addAttribute("member", member);
+		
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

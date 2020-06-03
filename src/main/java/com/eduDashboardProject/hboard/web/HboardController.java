@@ -1,6 +1,7 @@
 package com.eduDashboardProject.hboard.web;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,10 +30,13 @@ public class HboardController {
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertPOST(HboardVO vo, RedirectAttributes rttr) {
+	public String insertPOST(HboardVO vo, RedirectAttributes rttr, HttpServletRequest request) {
 		log.info("insert POST.....");
 		
 		int result = hboardService.insert(vo);
+		String action = request.getServletPath();
+		log.info("action:: " + action);
+		
 		
 		if(result != 1) {
 			rttr.addFlashAttribute("msg", "처리 실패");

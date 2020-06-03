@@ -3,7 +3,33 @@
 
 <mapper namespace="memberInfoMapper">
 
+<insert id="insert" parameterType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
+	INSERT INTO member_info(mno,birth,email,job)
+	VALUES(#{mno},#{birth},#{email},#{job})
+
+</insert>
+
+<select id="read" resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
+
+	SELECT m.id,m.name,i.birth,i.email,i.job
+	from member m
+	INNER JOIN member_info i ON m.mno = i.mno 
+
+</select>
+
+<update id="update">
+	UPDATE member_info
+	
+	SET 
+		birth = #{birth},
+		email = #{email},
+		job = #{job}
+	
+	WHERE mno = #{mno}
+
+
+</update>
 
 
 

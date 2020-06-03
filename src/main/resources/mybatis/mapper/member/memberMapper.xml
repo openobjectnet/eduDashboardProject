@@ -22,5 +22,6 @@
 	<select id="idCheck" resultType="Long">
 		SELECT COUNT(*) FROM member WHERE id = #{id}
 	</select>
+	
 
 </mapper>

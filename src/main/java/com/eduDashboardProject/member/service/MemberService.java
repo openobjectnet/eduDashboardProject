@@ -8,7 +8,7 @@ public interface MemberService {
 
 	public int insert(MemberVO vo);
 	
-	public boolean login(MemberVO vo, HttpSession session);
+	public MemberVO login(MemberVO vo, HttpSession session);
 	
 	public boolean idCheck(String id);
 	

@@ -13,5 +13,5 @@ public class YboardDto {
 	private Timestamp reg_date;
 	private Timestamp mod_date;
 	private String id;
-	private long mno;
+	private int mno;
 }
