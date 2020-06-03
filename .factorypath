@@ -1,16 +1,18 @@
 <factorypath>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-core/4.3.24.RELEASE/spring-core-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-webmvc/4.3.24.RELEASE/spring-webmvc-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-aop/4.3.24.RELEASE/spring-aop-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-expression/4.3.24.RELEASE/spring-expression-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-web/4.3.24.RELEASE/spring-web-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-test/4.3.24.RELEASE/spring-test-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-jdbc/4.3.24.RELEASE/spring-jdbc-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-tx/4.3.24.RELEASE/spring-tx-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-context/4.3.24.RELEASE/spring-context-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-context-support/4.3.24.RELEASE/spring-context-support-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-beans/4.3.24.RELEASE/spring-beans-4.3.24.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/aspectj/aspectjrt/1.9.5/aspectjrt-1.9.5.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/aspectj/aspectjrt/1.9.3/aspectjrt-1.9.3.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/aspectj/aspectjweaver/1.9.3/aspectjweaver-1.9.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/javax/servlet/jstl/1.2/jstl-1.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/commons-pool/commons-pool/1.5.4/commons-pool-1.5.4.jar" enabled="true" runInBatchMode="false"/>
@@ -33,8 +35,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-aop/4.3.2.RELEASE/spring-aop-4.3.2.RELEASE.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-tx/4.3.2.RELEASE/spring-tx-4.3.2.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/javax/servlet/jsp/jsp-api/2.2/jsp-api-2.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/springfox/springfox-swagger2/2.6.1/springfox-swagger2-2.6.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/swagger/swagger-annotations/1.5.10/swagger-annotations-1.5.10.jar" enabled="true" runInBatchMode="false"/>
