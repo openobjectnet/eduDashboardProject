@@ -17,8 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--게시물 추가  -->
 	<insert id="insert">
 		
-		insert into y_board(title,content,id)
-		values(#{title},#{content},#{id})
+		insert into y_board(title,content,id,mno)
+		values(#{title},#{content},#{id},#{mno})
 		
 	</insert>
 	

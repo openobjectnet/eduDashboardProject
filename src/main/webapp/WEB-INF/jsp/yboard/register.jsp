@@ -56,6 +56,7 @@
 			<div class="panel-body">
 				<form role="form" action="/yboard/register" method="post">
 					<input type="hidden" name="id" value="${member.id}">
+					<input type="hidden" name="mno" value="${member.mno}">
 					<div class="form-group">
 						<label>Title</label><input class="form-control" name='title'>
 					</div>

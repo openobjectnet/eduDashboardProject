@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class MemberInfoVO {
 
-	private long mno;
+	private int mno;
 	private Date birth;
 	private String email;
 	private String job;
