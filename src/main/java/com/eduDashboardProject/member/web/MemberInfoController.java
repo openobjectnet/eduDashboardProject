@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduDashboardProject.member.service.MemberInfoService;
 import com.eduDashboardProject.member.vo.MemberInfoVO;
+import com.eduDashboardProject.member.vo.MemberVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,9 +32,9 @@ public class MemberInfoController {
 		log.info("insert page.....");
 	}
 	
-	@RequestMapping(value="/registerinfo", method = RequestMethod.POST)
+	@RequestMapping(value="/register", method = RequestMethod.POST)
 	public String insertPost(MemberInfoVO vo, RedirectAttributes rttr){
-		log.info("insert memberinfo.......");
+		log.info("insert memberinfo......." + vo);
 		
 		int result = memberinfoService.insert(vo);
 		
@@ -40,12 +43,12 @@ public class MemberInfoController {
 		}
 		rttr.addFlashAttribute("msg", "처리 완료");
 		
-		return "redirect:/";
+		return "redirect:/main";
 	}
 	
-	@GetMapping("/modifyinfo")
+	@GetMapping("/modify")
 	public void updateGet(Model model, @RequestParam("mno")int mno){
-		model.addAttribute("vo",memberinfoService.read(mno));
+		model.addAttribute("info",memberinfoService.read(mno));
 	}
 	
 	@PostMapping("/modify")
@@ -58,12 +61,14 @@ public class MemberInfoController {
 		
 		rttr.addFlashAttribute("msg", "처리 완료");
 		
-		return "redirect:/";
+		ModelAndView mav = new ModelAndView();
+		return "redirect:/main";
 	}
 	
 	@GetMapping("/get")
 	public void readPost(Model model,@RequestParam("mno") int mno){
-		model.addAttribute("vo", memberinfoService.read(mno));
+		
+		model.addAttribute("info", memberinfoService.read(mno));
 	}
 
 

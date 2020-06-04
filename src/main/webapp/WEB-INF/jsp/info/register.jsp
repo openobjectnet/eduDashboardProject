@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Member Informaion Register</title>
+  <title>Member Info Register</title>
 
   <!-- Custom fonts for this template-->
   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">"${member.id}" Register your Information!</h1>
+                <h1 class="h4 text-gray-900 mb-4">"${member.name}" Register your Information!</h1>
               </div>
               <form class="user">
                 <div class="form-group row">
@@ -56,7 +56,7 @@
                   </div>
                 </div>
                 <a href="login.html" class="btn btn-primary btn-user btn-block">
-                  Register Account
+                 	등록하기
                 </a>
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
