@@ -12,9 +12,10 @@
 
 <select id="read" resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
-	SELECT m.id,m.name,i.birth,i.email,i.job
-	from member m
-	INNER JOIN member_info i ON m.mno = i.mno 
+	SELECT m.name,m.id,i.email,i.birth,i.job
+	FROM member m, member_info i
+	where m.mno = #{mno}
+	AND m.mno = i.mno	
 
 </select>
 

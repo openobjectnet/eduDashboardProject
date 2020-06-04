@@ -40,7 +40,7 @@
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
     <!-- 
     <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="100" maxIdle="30" maxWait="10000" name="jndi/sampleProject" password="1111" type="javax.sql.DataSource" url="jdbc:mysql://15.164.72.128:3309/code_m_dev?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true" username="root" validationInterval="30000" validationQuery="SELECT 1"/> -->
-     <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="100" maxIdle="30" maxWait="10000" name="jndi/eduDashboardProject" password="Gwy@neth!1" type="javax.sql.DataSource" url="jdbc:mysql://221.139.81.198:3306/D_SEHOON_DB?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;serverTimezone=UTC" username="dgwyneth" validationInterval="30000" validationQuery="SELECT 1"/> 
+     <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxActive="100" maxIdle="30" maxWait="10000" name="jndi/eduDashboardProject" password="Gwy@neth!1" type="javax.sql.DataSource" url="jdbc:mysql://221.139.81.198:3306/EduDashboard?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;serverTimezone=UTC" username="dgwyneth" validationInterval="30000" validationQuery="SELECT 1"/> 
     
   </GlobalNamingResources>
 

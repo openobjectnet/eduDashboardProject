@@ -80,7 +80,7 @@ input.form-control[readonly], textarea.form-control[readonly] {
 			</div>
 			</div>
 			</div>
-        </div>
+        </div>ea
         <!-- /.container-fluid -->
 
       </div>
