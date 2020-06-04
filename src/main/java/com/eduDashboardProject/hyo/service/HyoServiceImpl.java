@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.eduDashboardProject.hyo.dao.HyoDAO;
 import com.eduDashboardProject.hyo.vo.HyoboardVO;
-
 @Service("HyoService")
 public class HyoServiceImpl implements HyoService {
 
