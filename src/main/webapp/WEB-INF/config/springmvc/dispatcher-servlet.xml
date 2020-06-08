@@ -38,6 +38,9 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/main"/>
 			<mvc:mapping path="/hboard/*"/>
+			<mvc:mapping path="/yboard/*"/>
+			<mvc:mapping path="/hyoboard/*"/>
+			<mvc:mapping path="/info/*"/>
 			<ref bean="authInterceptor"/>
 		</mvc:interceptor>
 		
