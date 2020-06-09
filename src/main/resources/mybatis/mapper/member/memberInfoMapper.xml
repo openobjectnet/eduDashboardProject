@@ -3,6 +3,10 @@
 
 <mapper namespace="memberInfoMapper">
 
+
+
+
+
 <insert id="insert" parameterType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
 	INSERT INTO member_info(mno,birth,email,job)
@@ -10,7 +14,7 @@
 
 </insert>
 
-<select id="read" resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
+<select id="read" parameterType="com.eduDashboardProject.member.vo.MemberVO" resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
 	SELECT m.name,m.id,i.email,i.birth,i.job
 	FROM member m, member_info i

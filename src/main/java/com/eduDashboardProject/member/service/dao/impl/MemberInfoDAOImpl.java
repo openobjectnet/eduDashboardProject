@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.eduDashboardProject.member.service.dao.MemberInfoDAO;
 import com.eduDashboardProject.member.vo.MemberInfoVO;
+import com.eduDashboardProject.member.vo.MemberVO;
 
 @Repository("MemberInfoDAO")
 public class MemberInfoDAOImpl implements MemberInfoDAO {
@@ -21,8 +22,8 @@ public class MemberInfoDAOImpl implements MemberInfoDAO {
 	}
 
 	@Override
-	public MemberInfoVO read(int mno) {
-		return sqlSession.selectOne("memberInfoMapper.read", mno);
+	public MemberInfoVO read(MemberVO vo) {
+		return sqlSession.selectOne("memberInfoMapper.read", vo);
 	}
 
 	@Override

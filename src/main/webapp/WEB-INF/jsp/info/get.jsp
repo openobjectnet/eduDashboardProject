@@ -55,18 +55,18 @@
 										</div>
 										<div class="form-group">
 											ID<input type="id" class="form-control form-control-user"
-												id="id" name='id' value="${member.id}"readonly="readonly">
+												id="id" name='id' value="${member.id}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											E-mail<input type="email"
-												class="form-control form-control-user" name='email' id="email"
-												value="${info.email}" readonly="readonly">
+												class="form-control form-control-user" name='email'
+												id="email" value="${info.email}" readonly="readonly">
 										</div>
-						
+
 										<div class="form-group">
 											Birth <input type="date"
-												class="form-control form-control-user" name='birth' id="birth"
-												value="${info.birth}" readonly="readonly">
+												class="form-control form-control-user" name='birth'
+												id="birth" value="${info.birth}" readonly="readonly">
 										</div>
 										<div class="form-group">
 											Job <input type="job" class="form-control form-control-user"
@@ -92,42 +92,47 @@
 							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
-								<form role="form" method="post" action="/info/register" >
-									<div class="modal-header text-center">
-										<h4 class="modal-title w-100 font-weight-bold">Register Info</h4>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body mx-3">
-									
-										<div class="md-form mb-5">
-											<i class="fas fa-user prefix grey-text"></i> 
-											<input type="text" id="job" name='job' class="form-control validate" placeholder="your job">
-											<input type="hidden" id="mno" name="mno" value="${member.mno}">
+									<form role="form" method="post" action="/info/register">
+										<div class="modal-header text-center">
+											<h4 class="modal-title w-100 font-weight-bold">Register
+												Info</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
 										</div>
+										<div class="modal-body mx-3">
 
-										<div class="md-form mb-5">
-											<i class="fas fa-envelope prefix grey-text"></i> <input
-												type="email" id="email" name='email' class="form-control validate" placeholder="your email">
-											
+											<div class="md-form mb-5">
+												<i class="fas fa-user prefix grey-text"></i> <input
+													type="text" id="job" name='job'
+													class="form-control validate" placeholder="your job">
+												<input type="hidden" id="mno" name="mno"
+													value="${member.mno}">
+											</div>
+
+											<div class="md-form mb-5">
+												<i class="fas fa-envelope prefix grey-text"></i> <input
+													type="email" id="email" name='email'
+													class="form-control validate" placeholder="your email">
+
+											</div>
+
+											<div class="md-form mb-5">
+												<i class="fas fa-tag prefix grey-text"></i> <input
+													type="date" id="birth" name='birth'
+													class="form-control validate" placeholder="your birth">
+
+											</div>
+
+
+
 										</div>
-
-										<div class="md-form mb-5">
-											<i class="fas fa-tag prefix grey-text"></i> <input
-												type="date" id="birth" name='birth' class="form-control validate" placeholder="your birth">
-											
+										<div class="modal-footer d-flex justify-content-center">
+											<button class="btn btn-info" type="submit">
+												Register <i class="fas fa-paper-plane-o ml-1"></i>
+											</button>
 										</div>
-
-										
-
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button class="btn btn-info" type="submit">
-											Register <i class="fas fa-paper-plane-o ml-1"></i>
-										</button>
-									</div>
 									</form>
 								</div>
 							</div>
@@ -139,51 +144,55 @@
 							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
-								<form role="form" method="post" action="/info/modify">
-								<input type="hidden" id='mno' name='mno' value='${member.mno}'>
-									<div class="modal-header text-center">
-										<h4 class="modal-title w-100 font-weight-bold">Modify Info</h4>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body mx-3">
-										<div class="md-form mb-5">
-											<i class="fas fa-user prefix grey-text"></i>
-											 <input	type="text" id="job" name='job' class="form-control validate" >
-											<label data-error="wrong" data-success="right" for="form34">Your
-												job</label>
+									<form role="form" id="modifyForm">
+										<input type="hidden" id='mno' name='mno' value='${member.mno}'>
+										<div class="modal-header text-center">
+											<h4 class="modal-title w-100 font-weight-bold">Modify
+												Info</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
 										</div>
+										<div class="modal-body mx-3">
+											<div class="md-form mb-5">
+												<i class="fas fa-user prefix grey-text"></i> <input
+													type="text" id="job" name='job'
+													class="form-control validate"> <label
+													data-error="wrong" data-success="right" for="form34">Your
+													job</label>
+											</div>
 
-										<div class="md-form mb-5">
-											<i class="fas fa-envelope prefix grey-text"></i> <input
-												type="email" id="email" name='email' class="form-control validate">
-											<label data-error="wrong" data-success="right" for="form29">Your
-												email</label>
+											<div class="md-form mb-5">
+												<i class="fas fa-envelope prefix grey-text"></i> <input
+													type="email" id="email" name='email'
+													class="form-control validate"> <label
+													data-error="wrong" data-success="right" for="form29">Your
+													email</label>
+											</div>
+
+											<div class="md-form mb-5">
+												<i class="fas fa-tag prefix grey-text"></i> <input
+													type="date" id="birth" name='birth'
+													class="form-control validate"> <label
+													data-error="wrong" data-success="right" for="form32">Birth</label>
+											</div>
+
+
+
 										</div>
-
-										<div class="md-form mb-5">
-											<i class="fas fa-tag prefix grey-text"></i> <input
-												type="date" id="birth" name='birth' class="form-control validate">
-											<label data-error="wrong" data-success="right" for="form32">Birth</label>
+										<div class="modal-footer d-flex justify-content-center">
+											<button class="btn btn-info" onclick="modify();">
+												Modify <i class="fas fa-paper-plane-o ml-1"></i>
+											</button>
 										</div>
-
-										
-
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button class="btn btn-info" type="submit">
-											Modify <i class="fas fa-paper-plane-o ml-1"></i>
-										</button>
-									</div>
-								</form>
+									</form>
 								</div>
 							</div>
 						</div>
 						<!-- /.Modify modal -->
 						<!-- /.Modal -->
-						
+
 					</div>
 				</div>
 
@@ -214,9 +223,39 @@
 		$('#modBtn').click(function() {
 			$('#modalModifyForm').modal();
 		});
-
 	
 	});
 </script>
+
+
+
+<script type="text/javascript">
+
+//수정 ajax 처리
+function modify(){
+      var modifyForm = $("#modifyForm").serialize();
+      $.ajax({
+             url:'/info/modify',
+             type:'post',
+             data: modifyForm,
+             success:
+                    function(result){
+            	 
+                         console.log(result);
+                                                                                                                                    
+                          },
+                          
+                   
+             error: function(e) {"실패 !! - " + alert("error"+e)},
+             complete:function(){/*  alert("통신완료"); */ }     
+      });//ajax......            
+}
+
+
+
+</script>
+
+
+
 
 </html>

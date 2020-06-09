@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.eduDashboardProject.member.service.MemberInfoService;
 import com.eduDashboardProject.member.service.dao.MemberInfoDAO;
 import com.eduDashboardProject.member.vo.MemberInfoVO;
+import com.eduDashboardProject.member.vo.MemberVO;
 
 @Service("MemberInfoService")
 public class MemberInfoServiceImpl implements MemberInfoService {
@@ -23,8 +24,8 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 	
 	//상세 정보 읽기
 	@Override
-	public MemberInfoVO read(int mno) {
-		return memberinfoDAO.read(mno);
+	public MemberInfoVO read(MemberVO vo) {
+		return memberinfoDAO.read(vo);
 	}
 	
 	
