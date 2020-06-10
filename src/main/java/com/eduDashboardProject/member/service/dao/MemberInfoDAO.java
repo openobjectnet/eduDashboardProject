@@ -9,6 +9,6 @@ public interface MemberInfoDAO {
 	
 	public MemberInfoVO read(MemberVO vo);
 	
-	public int update(MemberInfoVO vo);
+	public MemberInfoVO update(MemberInfoVO vo);
 	
 }

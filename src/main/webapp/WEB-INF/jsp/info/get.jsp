@@ -240,7 +240,7 @@ function modify(){
              data: modifyForm,
              success:
                     function(result){
-            	 
+            	 			alert("성공!");
                          console.log(result);
                                                                                                                                     
                           },

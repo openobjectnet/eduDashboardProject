@@ -7,34 +7,42 @@
 
 
 
-<insert id="insert" parameterType="com.eduDashboardProject.member.vo.MemberInfoVO">
+	<insert id="insert" parameterType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
-	INSERT INTO member_info(mno,birth,email,job)
-	VALUES(#{mno},#{birth},#{email},#{job})
+		INSERT INTO member_info(mno,birth,email,job)
+		VALUES(#{mno},#{birth},#{email},#{job})
 
-</insert>
+	</insert>
 
-<select id="read" parameterType="com.eduDashboardProject.member.vo.MemberVO" resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
+	<select id="read" parameterType="com.eduDashboardProject.member.vo.MemberVO"	resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
-	SELECT m.name,m.id,i.email,i.birth,i.job
-	FROM member m, member_info i
-	where m.mno = #{mno}
-	AND m.mno = i.mno	
+		SELECT m.name,m.id,i.email,i.birth,i.job
+		FROM member m, member_info i
+		where m.mno = #{mno}
+		AND m.mno = i.mno
 
-</select>
+	</select>
 
-<update id="update">
-	UPDATE member_info
-	
-	SET 
-		birth = #{birth},
-		email = #{email},
-		job = #{job}
-	
-	WHERE mno = #{mno}
+<update id="update" parameterType="com.eduDashboardProject.member.vo.MemberVO">
+    
+        <selectKey resultType="com.eduDashboardProject.member.vo.MemberInfoVO" keyProperty="mno" order="AFTER" >
+
+            SELECT m.name,m.id,i.email,i.birth,i.job
+            FROM member m, member_info i
+            where m.mno = #{mno}
+            AND m.mno = i.mno
+
+        </selectKey>
+
+        UPDATE member_info
+        SET
+        birth = #{birth},
+        email = #{email},
+        job = #{job}
+        WHERE mno = #{mno}
 
 
-</update>
+</update> 
 
 
 

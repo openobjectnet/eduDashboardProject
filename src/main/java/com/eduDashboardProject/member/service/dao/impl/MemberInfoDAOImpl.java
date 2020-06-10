@@ -27,8 +27,8 @@ public class MemberInfoDAOImpl implements MemberInfoDAO {
 	}
 
 	@Override
-	public int update(MemberInfoVO vo) {
-		return sqlSession.update("memberInfoMapper.update", vo);
+	public MemberInfoVO update(MemberInfoVO vo) {
+		return sqlSession.selectOne("memberInfoMapper.update", vo);
 	}
 
 	

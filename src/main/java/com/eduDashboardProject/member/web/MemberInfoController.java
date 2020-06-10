@@ -1,6 +1,9 @@
 package com.eduDashboardProject.member.web;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -74,16 +77,12 @@ public class MemberInfoController {
 	
 	@PostMapping(value="/modify")
 	public ResponseEntity<MemberInfoVO> updatePost(MemberInfoVO mvo,MemberVO vo){
-		log.info("chg email = " + mvo.getEmail());
-		  int result = memberinfoService.update(mvo);
-		  log.info("result = " + result);
-		  if(result==1){
-			  MemberInfoVO info = memberinfoService.read(vo);
-			  log.info("info = " + info.getEmail());
-			  
-			  return new ResponseEntity<MemberInfoVO>(info, HttpStatus.OK);
-		  }
-		  return new ResponseEntity<MemberInfoVO>(HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		  MemberInfoVO result = memberinfoService.update(mvo);  
+		  log.info("modified result: " + result);
+		  return new ResponseEntity<MemberInfoVO>(result, HttpStatus.OK);
+		 
+		  
 		  
 		  
 		  //return memberinfoService.update(vo) == 1 ? new ResponseEntity<MemberInfoVO>(HttpStatus.OK) : new ResponseEntity<MemberInfoVO>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -94,11 +93,21 @@ public class MemberInfoController {
 	
 	
 	@GetMapping("/get")
-	public void readPost(Model model,MemberVO vo){
+	public void readPost(Model model,MemberVO vo, HttpSession session){
+
+		/*Object obj = session.getAttribute("member");	
+		MemberVO vo1 = (MemberVO)obj;*/
+		
+		MemberVO sessionInfo = (MemberVO) session.getAttribute("member");
+		
+		log.info("세션 :" + sessionInfo);
+		
+		if(sessionInfo!=null){
+			MemberInfoVO member = memberinfoService.read(sessionInfo);
+			model.addAttribute("info", member);
+		}
 		
 		
-		MemberInfoVO member = memberinfoService.read(vo);
-		model.addAttribute("info", member);
 	}
 
 	/*
