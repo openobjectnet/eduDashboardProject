@@ -55,6 +55,13 @@ public class MemberInfoController {
 		
 		return "redirect:/main";
 	}
+	
+	/*@RequestMapping(value = "/register")
+	public ResponseEntity<MemberInfoVO> insertPost()*/
+	
+	
+	
+	
 /*	
 	@GetMapping("/modify")
 	public void updateGet(Model model, @RequestParam("mno")int mno){
@@ -93,16 +100,16 @@ public class MemberInfoController {
 	
 	
 	@GetMapping("/get")
-	public void readPost(Model model,MemberVO vo, HttpSession session){
+	public void readPost(Model model,HttpSession session){
 
 		/*Object obj = session.getAttribute("member");	
 		MemberVO vo1 = (MemberVO)obj;*/
+				
+		MemberVO sessionInfo = (MemberVO)session.getAttribute("member");
 		
-		MemberVO sessionInfo = (MemberVO) session.getAttribute("member");
+		log.info("세션: "+sessionInfo);
 		
-		log.info("세션 :" + sessionInfo);
-		
-		if(sessionInfo!=null){
+		if(sessionInfo != null){
 			MemberInfoVO member = memberinfoService.read(sessionInfo);
 			model.addAttribute("info", member);
 		}

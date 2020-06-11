@@ -78,8 +78,8 @@
 
 									<div class="text-center">
 										<%--  <a href="/info/modify?mno=${member.mno }" class="btn btn-primary btn-user btn-block">수정페이지로 이동
-                    </a> --%>
-										<button id="regBtn" class='btn btn-info'>Register</button>
+                    </a> --%>                    					
+										<button id="regBtn" class='btn btn-info'>Register</button>																											
 										<button id="modBtn" class='btn btn-info'>Modify</button>
 									</div>
 								</div>

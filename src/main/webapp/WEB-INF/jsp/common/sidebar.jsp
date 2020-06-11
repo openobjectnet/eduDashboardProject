@@ -118,6 +118,11 @@
           <i class="fas fa-fw fa-table"></i>
           <span>HYO-Board</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/mentoring/list">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Mentoring</span></a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

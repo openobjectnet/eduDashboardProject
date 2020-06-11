@@ -23,7 +23,7 @@
 
 	</select>
 
-<update id="update" parameterType="com.eduDashboardProject.member.vo.MemberVO">
+	<update id="update" parameterType="com.eduDashboardProject.member.vo.MemberVO">
     
         <selectKey resultType="com.eduDashboardProject.member.vo.MemberInfoVO" keyProperty="mno" order="AFTER" >
 
@@ -35,14 +35,17 @@
         </selectKey>
 
         UPDATE member_info
+        
         SET
+        
         birth = #{birth},
         email = #{email},
         job = #{job}
+        
         WHERE mno = #{mno}
 
 
-</update> 
+	</update> 
 
 
 
