@@ -1,26 +1,15 @@
 package com.eduDashboardProject.member.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduDashboardProject.member.service.MemberInfoService;
@@ -67,7 +56,7 @@ public class MemberInfoController {
 	public void updateGet(Model model, @RequestParam("mno")int mno){
 		model.addAttribute("info",memberinfoService.read(mno));
 	}
-*/	/*
+	
 	@PostMapping("/modify")
 	public String updatePost(MemberInfoVO vo,RedirectAttributes rttr){
 		int result = memberinfoService.update(vo);
@@ -82,21 +71,30 @@ public class MemberInfoController {
 		return "redirect:/main";
 	}*/
 	
-	@PostMapping(value="/modify")
+	@RequestMapping(value="/modify")
 	public ResponseEntity<MemberInfoVO> updatePost(MemberInfoVO mvo,MemberVO vo){
-		
-		  MemberInfoVO result = memberinfoService.update(mvo);  
+			  
+		 /* MemberInfoVO result = memberinfoService.update(mvo);  
 		  log.info("modified result: " + result);
-		  return new ResponseEntity<MemberInfoVO>(result, HttpStatus.OK);
+		  return new ResponseEntity<MemberInfoVO>(result, HttpStatus.OK); */
+		
+		int result = memberinfoService.update(mvo);
+		
+		if(result == 1){
+			log.info("vo: "+vo);
+			MemberInfoVO info = memberinfoService.read(vo);
+			
+			log.info("info 수정 : "+info.getJob() + "info 2 " + info.getEmail());
+
+			return new ResponseEntity<MemberInfoVO>(info,HttpStatus.OK);
+			
+		}else{
+			return new ResponseEntity<MemberInfoVO>(HttpStatus.BAD_REQUEST); 
+		}
+		
 		 
-		  
-		  
-		  
-		  //return memberinfoService.update(vo) == 1 ? new ResponseEntity<MemberInfoVO>(HttpStatus.OK) : new ResponseEntity<MemberInfoVO>(HttpStatus.INTERNAL_SERVER_ERROR);
+		  		
 	}
-	
-	
-	
 	
 	
 	@GetMapping("/get")

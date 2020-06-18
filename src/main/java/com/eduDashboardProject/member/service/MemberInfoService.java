@@ -7,7 +7,7 @@ public interface MemberInfoService {
 
 	public int insert(MemberInfoVO vo);
 	
-	public MemberInfoVO update(MemberInfoVO vo);
+	public int update(MemberInfoVO vo);
 	
 	public MemberInfoVO read(MemberVO vo);
 }

@@ -24,6 +24,17 @@
 <!-- Custom styles for this template-->
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
+<!-- Bootstrap core JavaScript-->
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
+<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/resources/js/sb-admin-2.min.js"></script>
+
+
+
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -201,21 +212,11 @@
 		</div>
 
 	</div>
-
-	<!-- Bootstrap core JavaScript-->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="/resources/js/sb-admin-2.min.js"></script>
-
 </body>
 
+
 <script type="text/javascript">
-	$(function() {
+	$(function(){
 		$('#regBtn').click(function() {
 			$('#modalRegisterForm').modal();
 		});
@@ -225,37 +226,73 @@
 		});
 	
 	});
-</script>
-
-
-
-<script type="text/javascript">
-
+	
+	
 //수정 ajax 처리
 function modify(){
-      var modifyForm = $("#modifyForm").serialize();
-      $.ajax({
-             url:'/info/modify',
-             type:'post',
-             data: modifyForm,
-             success:
-                    function(result){
-            	 			alert("성공!");
-                         console.log(result);
-                                                                                                                                    
-                          },
-                          
-                   
-             error: function(e) {"실패 !! - " + alert("error"+e)},
-             complete:function(){/*  alert("통신완료"); */ }     
-      });//ajax......            
+/* 	var requestData = {};
+	$.each($('#modalModifyForm input'),function(index,value){
+		requestData[$(value).attr('name')] = $(value).val();
+	});
+	 */
+	/* var requestData =  $('modalModifyForm input').serialize();
+	 
+	$.ajax({
+		url:'/info/modify',
+		type:'post',
+		data:requestData,		
+		success:function(result){
+			alert("성공이얌");
+		},
+		error:function(e){
+			alert("실패얌"+e);
+		},
+		complete: function(){
+			alert("완료얌");
+		}
+		
+	}); */
+	
+	var requestData = {};
+	$.each($('#modalModifyForm input'), function(index, value) {
+	    requestData[$(value).attr('name')] = $(value).val();
+	});
+	$.ajax({
+	    url:"/info/modify",
+	    type:'post',
+	    data: requestData,
+	    success:function(result){
+	        alert("성공이얌");
+	        $('#modalModifyForm').modal("hide");
+	    },
+	    error:function(e){
+	        alert("실패얌"+e);
+	    },
+	    complete: function(){
+	        alert("완료얌");
+	    }
+
+	});
+	
+	return false;
+	
 }
-
-
-
+	
+/* 	function AjaxCallBack(result){
+		//제이쿼리 비우고 받아온 데이터 append
+		//1. result안에있는 값	
+		$("#email").html();
+		$("#birth").html();
+		$("#job").html();
+		
+		$("#email").empty();
+		$("#birth").empty();
+		$("#job").empty();
+		
+		$("#email").append(result.email);
+		$("#birth").append(result.birth);
+		$("#job").append(result.job);
+		
+	} */
 </script>
-
-
-
-
 </html>

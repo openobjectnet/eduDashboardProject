@@ -8,5 +8,7 @@ public interface MentoringDAO {
 
 	public List<MentoringVO> selectList();
 	
+//	/public int register(MentoringVO mentoring);
+	
 	
 }

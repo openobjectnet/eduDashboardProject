@@ -22,4 +22,19 @@ public class MentoringDAOImpl implements MentoringDAO {
 		return sqlSession.selectList("mentoringMapper.selectList");
 	}
 
+	/*@Override
+	public int register(MentoringVO mentoring) {
+		String SQL = "INSERT INTO mentoring VALUES(?, ?, ?, ?)";
+		try{
+			psmt = conn.prepareStatement(SQL);
+			psmt.setString(1,user.getUsername());
+			psmt.setInt(2,user.getAge());
+			psmt.setString(3,user.getUserGender());
+			return pstmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류
+	}*/
+
 }

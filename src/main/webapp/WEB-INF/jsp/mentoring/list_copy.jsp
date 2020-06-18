@@ -61,7 +61,6 @@ $(function(){
 	    success:function(result){
 	        alert("성공이얌");
 	        console.log("list!!!");
-	        
 	      
 	    },
 	    error:function(e){
@@ -79,7 +78,7 @@ $(function(){
 
 </head>
 <h1>ㄴㅇㅇㅇ</h1>
-<body id="page-top">
+<%-- <body id="page-top">
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
@@ -193,7 +192,7 @@ $(function(){
 
 	
 
-</body> 
+</body> --%>
 
 
 

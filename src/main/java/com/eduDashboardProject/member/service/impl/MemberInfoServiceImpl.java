@@ -31,7 +31,7 @@ public class MemberInfoServiceImpl implements MemberInfoService {
 	
 	//상세 정보 수정하기
 	@Override
-	public MemberInfoVO update(MemberInfoVO vo) {
+	public int update(MemberInfoVO vo) {
 		System.out.println("결과입니당: "+memberinfoDAO.update(vo));
 		return memberinfoDAO.update(vo);
 	}

@@ -16,7 +16,7 @@
 
 	<select id="read" parameterType="com.eduDashboardProject.member.vo.MemberVO"	resultType="com.eduDashboardProject.member.vo.MemberInfoVO">
 
-		SELECT m.name,m.id,i.email,i.birth,i.job
+		SELECT m.mno,m.name,m.id,i.email,i.birth,i.job
 		FROM member m, member_info i
 		where m.mno = #{mno}
 		AND m.mno = i.mno
@@ -25,15 +25,15 @@
 
 	<update id="update" parameterType="com.eduDashboardProject.member.vo.MemberVO">
     
-        <selectKey resultType="com.eduDashboardProject.member.vo.MemberInfoVO" keyProperty="mno" order="AFTER" >
+       <!--  <selectKey resultType="map" keyProperty="mno" order="AFTER" >
 
-            SELECT m.name,m.id,i.email,i.birth,i.job
+            SELECT m.name as name1,m.id as name2,i.email,i.birth,i.job
             FROM member m, member_info i
             where m.mno = #{mno}
             AND m.mno = i.mno
 
         </selectKey>
-
+ -->
         UPDATE member_info
         
         SET
