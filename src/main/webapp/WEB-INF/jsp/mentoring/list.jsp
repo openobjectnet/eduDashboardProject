@@ -21,64 +21,62 @@
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
-<link
-	href="/resources/vendor/datatables/dataTables.bootstrap4.min.css"
+<link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css"
 	rel="stylesheet">
-	
-	
-	
-	<!-- Bootstrap core JavaScript-->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core plugin JavaScript-->
-	<script
-		src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-	<!-- Custom scripts for all pages-->
-	<script src="/resources/js/sb-admin-2.min.js"></script>
 
-	<!-- Page level plugins -->
-	<script
-		src="/resources/vendor/datatables/jquery.dataTables.min.js"></script>
-	<script
-		src="/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
+<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Page level custom scripts -->
-	<script src="/resources/js/demo/datatables-demo.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/resources/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/resources/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/resources/js/demo/datatables-demo.js"></script>
 
 <script type="text/javascript">
+	$(function() {
 
+		var requestData = $('#dataTable tbody td');
 
+		$.ajax({
+			url : "/mentoring/list2",
+			type : 'post',
+			data : requestData,
+			dataType : 'json',
+			success : function(result) {
+				alert("성공이얌");
+				console.log("list!!!");
 
-$(function(){
-	alert("나왕!!");
-	$.ajax({
-	    url:"/mentoring/list2",
-	    type:'post',
-	    
-	    success:function(result){
-	        alert("성공이얌");
-	        console.log("list!!!");
-	        
-	      
-	    },
-	    error:function(e){
-	        alert("실패얌"+e);
-	    },
-	    complete: function(){
-	        alert("완료얌");
-	    }
+			},
+			error : function(e) {
+				alert("실패얌" + e);
+			},
+			complete : function() {
+				alert("완료얌");
+			}
 
+		});
+		
+		
+		$('#tableBody').append("")
+		
+		
+		
 	});
-});
-
-
 </script>
 
 </head>
-<h1>ㄴㅇㅇㅇ</h1>
+
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -102,7 +100,8 @@ $(function(){
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Mentoring Budget Management Page</h1>
+					<h1 class="h3 mb-2 text-gray-800">Mentoring Budget Management
+						Page</h1>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -123,7 +122,7 @@ $(function(){
 											<th>비고</th>
 										</tr>
 									</thead>
-									<tbody align="center">
+									<tbody id="tableBody" align="center">
 										<c:forEach items="${list}" var="list">
 											<tr>
 												<td>${list.idx}</td>
@@ -131,6 +130,7 @@ $(function(){
 												<td>${list.orderrecord}</td>
 												<td>${list.price}</td>
 												<td>${list.remark}</td>
+											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -138,13 +138,7 @@ $(function(){
 
 							</div>
 						</div>
-						<div class="card-footer">
-							<div style="text-align: right;">
-								<c:if test="${not empty member.id}">
-									<a href="insert" class="btn btn-primary">등록</a>
-								</c:if>
-							</div>
-						</div>
+
 					</div>
 
 				</div>
@@ -191,9 +185,9 @@ $(function(){
 		</div>
 	</div>
 
-	
 
-</body> 
+
+</body>
 
 
 

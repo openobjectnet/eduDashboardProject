@@ -1,17 +1,10 @@
 package com.eduDashboardProject.mentoring.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.eduDashboardProject.mentoring.service.MentoringService;
 import com.eduDashboardProject.mentoring.vo.MentoringVO;
-import com.google.gson.Gson;
-
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -44,6 +35,7 @@ public class MentoringController {
 	@RequestMapping(value = "/list")
 	public ModelAndView list(ModelAndView mav) {
 		mav.setViewName("/mentoring/list");
+		mav.addObject("list", mentoringService.selectList());
 		return mav;
 		
 
@@ -52,6 +44,8 @@ public class MentoringController {
 	@RequestMapping(value = "/list2")
 	public ResponseEntity<List<MentoringVO>> list2(Model model) {
 		log.info("list2......");
+		
+		
 		//response.setHeader( "Content-Type", "text/html;charset=utf-8" );
 		model.addAttribute("list", mentoringService.selectList());
 
